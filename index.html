@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración básica de la página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mi Rutina De Entrenamiento para mejorar el salto vertical y prevenir lesiones">
+    <title>Mi Rutina De Entrenamiento</title>
+    <style>
+        /* Estilos generales */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: white; color: black; }
+        header { 
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy8hs1gNKhhUsFzFnJBM6KhsyiZuQRj4q8Kw&s'); 
+            background-size: cover; /* Ajusta la imagen al tamaño del header */
+            background-position: center; /* Centra la imagen */
+            color: white; 
+            text-align: center; 
+            padding: 4rem 1rem; /* Aumentamos el padding para dar más espacio */
+            height: 300px; /* Altura fija para el header */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        header h1 { 
+            background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para mejorar la legibilidad */
+            padding: 10px 20px; 
+            border-radius: 5px; 
+            font-size: 3rem; /* Aumenta el tamaño del título */
+        }
+        nav { background: #34495e; text-align: center; padding: 10px; }
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
+        nav button { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; padding: 10px; cursor: pointer; background: none; border: none; display: block; width: 100%; text-align: left; }
+        section { padding: 40px 20px; border-bottom: 1px solid #ddd; display: none; }
+        section:target { display: block; }
+        h1, h2 { color: white; }
+        h2.negrita { font-weight: bold; color: #2c3e50; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        table, th, td { border: 1px solid #ccc; color: black; }
+        th, td { padding: 10px; text-align: left; }
+
+        /* Estilos para el menú de días */
+        #dias-menu { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+        #dias-menu button { background: #34495e; color: white; border: none; padding: 10px 15px; cursor: pointer; font-weight: bold; }
+        #dias-menu button:hover { background: #2c3e50; }
+
+        /* Estilos para la sección de Explicación con imagen de fondo */
+        #explicacion {
+            background-image: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); /* URL de la imagen de fondo */
+            background-size: cover; /* Ajusta la imagen al tamaño de la sección */
+            background-position: center; /* Centra la imagen */
+            color: white; /* Cambia el color del texto para que sea legible */
+        }
+        #explicacion h2,
+        #explicacion p {
+            background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para el texto */
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block; /* Ajusta el tamaño del fondo al contenido */
+        }
+
+        /* Estilos para la sección de Material con imagen de fondo */
+        #material {
+            background-image: url('https://images.unsplash.com/photo-1536922246289-88c42f957773?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); /* Nueva imagen de fondo */
+            background-size: cover; /* Ajusta la imagen al tamaño de la sección */
+            background-position: center; /* Centra la imagen */
+            color: white; /* Cambia el color del texto para que sea legible */
+        }
+        #material h2,
+        #material p {
+            background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para el texto */
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block; /* Ajusta el tamaño del fondo al contenido */
+        }
+
+        /* Estilos para la sección de Lugar con imagen de fondo */
+        #lugar {
+            background-image: url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80'); /* URL de la imagen de fondo */
+            background-size: cover; /* Ajusta la imagen al tamaño de la sección */
+            background-position: center; /* Centra la imagen */
+            color: white; /* Cambia el color del texto para que sea legible */
+        }
+        #lugar h2,
+        #lugar p {
+            background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para el texto */
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block; /* Ajusta el tamaño del fondo al contenido */
+        }
+
+        /* Estilos para las secciones sin imagen de fondo */
+        #rutina,
+        #tablas {
+            background: white; /* Fondo blanco */
+            color: black; /* Texto negro */
+        }
+        #rutina h2,
+        #tablas h2 {
+            color: #2c3e50; /* Color oscuro para los títulos */
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <h1>Mi Rutina De Entrenamiento</h1>
+    </header>
+
+    <!-- Menú de navegación -->
+    <nav>
+        <button onclick="document.getElementById('menu').style.display = document.getElementById('menu').style.display === 'block' ? 'none' : 'block'">Menú</button>
+        <div id="menu" style="display: none;">
+            <a href="#explicacion" onclick="resaltarTitulo('explicacion')">Explicación</a>
+            <a href="#material" onclick="resaltarTitulo('material')">Material</a>
+            <a href="#lugar" onclick="resaltarTitulo('lugar')">Lugar</a>
+            <a href="#rutina" onclick="resaltarTitulo('rutina')">Rutina</a>
+            <a href="#tablas" onclick="resaltarTitulo('tablas')">Tablas de Entrenamiento</a>
+        </div>
+    </nav>
+
+    <!-- Sección de explicación -->
+    <section id="explicacion">
+        <h2 id="titulo-explicacion">Explicación</h2>
+        <p>Esta rutina de entrenamiento está diseñada para ayudarte a mejorar tu salto vertical y fortalecer tu cuerpo, mientras previenes lesiones. A través de una combinación de ejercicios pliométricos, estiramientos y movimientos dinámicos, podrás desarrollar potencia, agilidad y control en cada salto. Lo mejor de todo es que no necesitas equipos costosos ni un gimnasio: solo tu cuerpo, disciplina y ganas de superarte.</p>
+    </section>
+
+    <!-- Sección de material -->
+    <section id="material">
+        <h2 id="titulo-material">Material</h2>
+        <p>El material que se necesita para realizar esta rutina es muy básico, debido a que para realizar esta rutina correctamente solo necesitas tu cuerpo y tener una buena actitud.</p>
+    </section>
+
+    <!-- Sección de lugar -->
+    <section id="lugar">
+        <h2 id="titulo-lugar">Lugar</h2>
+        <p>Para realizar esta rutina es recomendable acudir a un lugar público como un parque o un lugar abierto, sin embargo, aunque con un poco más de dificultades esta rutina la puedes realizar en tu propia casa.</p>
+    </section>
+
+    <!-- Sección de rutina -->
+    <section id="rutina">
+        <h2 id="titulo-rutina">Rutina</h2>
+        <p>Breve explicación de los ejercicios de cada día:</p>
+        <ul>
+            <li><strong>Día 1:</strong>
+                <ul>
+                    <li><strong>Saltos en caja:</strong> Salta sobre una caja o superficie elevada con ambos pies, aterrizando suavemente.</li>
+                    <li><strong>Saltos a una pierna:</strong> Salta sobre una pierna, manteniendo el equilibrio y aterrizando con control.</li>
+                    <li><strong>Salto vertical con impulso:</strong> Salta lo más alto posible usando un movimiento de brazos para impulsarte.</li>
+                </ul>
+            </li>
+            <li><strong>Día 2:</strong>
+                <ul>
+                    <li><strong>Profundidad + salto vertical:</strong> Salta desde una altura y, al aterrizar, realiza un salto vertical inmediato.</li>
+                    <li><strong>Saltos laterales:</strong> Salta de lado a lado, manteniendo los pies juntos y aterrizando suavemente.</li>
+                    <li><strong>Tuck jumps:</strong> Salta llevando las rodillas al pecho en el aire.</li>
+                </ul>
+            </li>
+            <li><strong>Día 3:</strong>
+                <ul>
+                    <li><strong>Salto a dos pies en escalón:</strong> Salta sobre un escalón o superficie elevada con ambos pies.</li>
+                    <li><strong>Salto con caída en equilibrio:</strong> Salta y aterriza en una posición estática, manteniendo el equilibrio.</li>
+                    <li><strong>Drop jumps:</strong> Salta desde una altura y aterriza con ambos pies, absorbiendo el impacto.</li>
+                </ul>
+            </li>
+            <li><strong>Día 4:</strong>
+                <ul>
+                    <li><strong>Saltos con contra-movimiento:</strong> Salta usando un movimiento previo de flexión de rodillas para impulsarte.</li>
+                    <li><strong>Pogo jumps:</strong> Realiza pequeños saltos en el lugar, como si fueras un resorte.</li>
+                    <li><strong>Saltos profundos con reacción rápida:</strong> Salta desde una altura y realiza un salto inmediato al aterrizar.</li>
+                </ul>
+            </li>
+            <li><strong>Día 5:</strong>
+                <ul>
+                    <li><strong>Saltos sobre línea:</strong> Salta de un lado a otro de una línea imaginaria, manteniendo los pies juntos.</li>
+                    <li><strong>Saltos con resistencia:</strong> Agáchate lo más que puedas, manteniendo una postura firme, y luego salta explosivamente hacia arriba, extendiendo completamente las piernas y los brazos.</li>
+                    <li><strong>Salto a una pierna con caída controlada:</strong> Salta sobre una pierna y aterriza con control, manteniendo el equilibrio.</li>
+                </ul>
+            </li>
+            <li><strong>Día 6:</strong>
+                <ul>
+                    <li><strong>Depth jumps:</strong> Salta desde una altura y aterriza con ambos pies, absorbiendo el impacto.</li>
+                    <li><strong>Saltos en zig-zag:</strong> Salta en diagonal, moviéndote en forma de zig-zag.</li>
+                    <li><strong>Salto con golpe de rodilla:</strong> Salta y lleva una rodilla al pecho en el aire.</li>
+                </ul>
+            </li>
+            <li><strong>Día 7:</strong>
+                <ul>
+                    <li><strong>Salto con pausa:</strong> Salta y mantén una pausa en el aire antes de aterrizar.</li>
+                    <li><strong>Saltos con cambio de dirección:</strong> Salta y cambia de dirección en el aire.</li>
+                    <li><strong>Broad jumps:</strong> Salta hacia adelante lo más lejos posible, aterrizando con ambos pies.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Sección de tablas de entrenamiento -->
+    <section id="tablas">
+        <h2 id="titulo-tablas">Tablas de Entrenamiento</h2>
+        <script>
+            // Función para mostrar las tablas por día
+            function mostrarDia(dia) {
+                document.querySelectorAll('.tabla-dia').forEach(tabla => tabla.style.display = 'none');
+                const diaElement = document.getElementById('dia' + dia);
+                if (diaElement) diaElement.style.display = 'block';
+            }
+
+            // Función para resaltar el título del apartado
+            function resaltarTitulo(seccion) {
+                document.querySelectorAll('h2').forEach(titulo => titulo.classList.remove('negrita'));
+                const tituloSeccion = document.getElementById('titulo-' + seccion);
+                if (tituloSeccion) tituloSeccion.classList.add('negrita');
+            }
+        </script>
+        <!-- Navegación entre días -->
+        <nav id="dias-menu">
+            <button onclick="mostrarDia(1)">Día 1</button>
+            <button onclick="mostrarDia(2)">Día 2</button>
+            <button onclick="mostrarDia(3)">Día 3</button>
+            <button onclick="mostrarDia(4)">Día 4</button>
+            <button onclick="mostrarDia(5)">Día 5</button>
+            <button onclick="mostrarDia(6)">Día 6</button>
+            <button onclick="mostrarDia(7)">Día 7</button>
+        </nav>
+
+        <!-- Tabla Día 1 -->
+        <div id="dia1" class="tabla-dia">
+            <h3>Día 1</h3>
+            <table>
+                <tr><th>Calentamiento</th><td>Saltos suaves, movilidad de tobillos y cadera, sentadillas sin peso.</td></tr>
+                <tr><th>Entrenamiento</th><td>Saltos en caja (3x8), Saltos a una pierna (3x6 por lado), Salto vertical con impulso (3x10)</td></tr>
+                <tr><th>Estiramientos</th><td>Estiramiento de cuádriceps, isquiotibiales y flexores de cadera.</td></tr>
+            </table>
+        </div>
+
+        <!-- Tabla Día 2 -->
+        <div id="dia2" class="tabla-dia" style="display:none;">
+            <h3>Día 2</h3>
+            <table>
+                <tr><th>Calentamiento</th><td>Movilidad de tobillos, skipping ligero, desplantes dinámicos.</td></tr>
+                <tr><th>Entrenamiento</th><td>Profundidad + salto vertical (3x6), Saltos laterales (3x8), Tuck jumps (3x10)</td></tr>
+                <tr><th>Estiramientos</th><td>Estiramientos de tobillos, aductores y gemelos.</td></tr>
+            </table>
+        </div>
+       <div id="dia3" class="tabla-dia" style="display:none;">
+            <h3>Día 3</h3>
+            <table>
+                <tr><th>Calentamiento</th><td>Rotaciones de cadera, movilidad de tobillo, skipping alto.</td></tr>
+                <tr><th>Entrenamiento</th><td>Salto a dos pies en escalón (3x8)  Salto con caída en equilibrio (3x6) Drop jumps (3x6)</td></tr>
+                <tr><th>Estiramientos</th><td>Estiramientos dinámicos de cadera, glúteos y femorales.</td></tr>
+              </table>
+        </div>
+       <div id="dia4" class="tabla-dia" style="display:none;">
+            <h3>Día 4</h3>
+            <table>
+                <tr><th>Calentamiento</th><td>Movilidad de cadera, talones a glúteos, sentadillas isométricas.</td></tr>
+                <tr><th>Entrenamiento</th><td>Saltos con contra-movimiento (3x8)  Pogo jumps(rebotes en el sitio) (3x15)  Saltos profundos con reacción rápida (3x6)</td></tr>
+                <tr><th>Estiramientos</th><td>Estiramientos pasivos de isquios, cuádriceps y tobillos.</td></tr>
+              </table>
+        </div>
+       <div id="dia5" class="tabla-dia" style="display:none;">
+            <h3>Día 5</h3>
+            <table>
+                <tr><th>Calentamiento</th><td>Saltos suaves en el sitio, movilidad de rodillas, sentadilla sin peso.</td></tr>
+                <tr><th>Entrenamiento</th><td>Saltos sobre línea (3x12)  Saltos con resistencia (3x8) Salto a una pierna con caída controlada (3x6)</td></tr>
+                <tr><th>Estiramientos</th><td>Estiramientos de tobillos, cadera y gemelos.</td></tr>
+              </table>
+        </div>
+       <div id="dia6" class="tabla-dia" style="display:none;">
+            <h3>Día 6</h3>
+            <table>
+                <tr><th>Calentamiento</th><td>Skipping bajo, movilidad articular, rotaciones de tobillo.</td></tr>
+                <tr><th>Entrenamiento</th><td>Depth jumps (3x6)  Saltos en zig-zag (3x8)  Salto con golpe de rodilla (3x10)</td></tr>
+                <tr><th>Estiramientos</th><td>Estiramiento de psoas, femorales y cuádriceps.</td></tr>
+              </table>
+        </div>
+       <div id="dia7" class="tabla-dia" style="display:none;">
+            <h3>Día 7</h3>
+            <table>
+                <tr><th>Calentamiento</th><td>Movilidad general, rotaciones de cadera, marcha en el sitio.</td></tr>
+                <tr><th>Entrenamiento</th><td>Salto con pausa (3x8) Saltos con cambio de dirección (3x6) Broad jumps (3x8)</td></tr>
+                <tr><th>Estiramientos</th><td>Estiramientos de cadera, isquios y tobillos.</td></tr>
+              </table>
+        </div>
+    </section>
+</body>
+</html>
